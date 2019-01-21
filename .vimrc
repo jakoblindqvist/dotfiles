@@ -10,8 +10,8 @@ Plugin 'https://github.com/rhysd/vim-clang-format'
 call vundle#end()
 filetype plugin indent on
 
+" Clang Format
 let g:clang_format#command = "/usr/bin/clang-format"
-
 autocmd FileType c ClangFormatAutoEnable
 autocmd FileType h ClangFormatAutoEnable
 autocmd FileType cpp ClangFormatAutoEnable
@@ -30,16 +30,18 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
+imap jk <Esc>
+
 imap <C-l> <Esc>
 "map <F7> mzgg=G`z
 
 syntax on
-set vb t_vb=
-imap jk <Esc>
 
-set smarttab
+" Disable bell
+set vb t_vb=
 
 "set tabstop=4 softtabstop=0 noexpandtab shiftwidth=4
+set smarttab
 set expandtab shiftwidth=4 softtabstop=4 tabstop=4
 
 set colorcolumn=80
@@ -50,11 +52,11 @@ set t_Co=256
 set background=dark
 colorscheme PaperColor
 
-"show trailing whitespace
+" Show trailing whitespace
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
 
-"Cursor visibility settings
+" Cursor visibility settings
 augroup CursorLine
 	au!
 	au VimEnter * setlocal cursorline
@@ -63,7 +65,7 @@ augroup CursorLine
 	au WinLeave * setlocal nocursorline
 augroup END
 
-"Automatically reload .vimrc
+" Automatically reload .vimrc
 augroup myvimrc
 	au!
 	au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
