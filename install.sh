@@ -12,3 +12,6 @@ cp ./.vimrc ~/.vimrc
 # Install vundle and install plugins
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 vim -u NONE +PluginInstall +qall
+
+# Copy .keybindings.tmux to .byobu config directory
+cp ./.byobu/keybindings.tmux ~/.byobu/keybindings.tmux
