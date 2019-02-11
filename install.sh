@@ -6,6 +6,9 @@ set -x
 git config --global --replace-all core.editor vim
 git config --global --replace-all core.excludesfile ~/.gitignore
 
+# Copy git excludesfile
+cp ./.gitignore ~/.gitignore
+
 # Copy .vimrc to home directory of current user
 cp ./.vimrc ~/.vimrc
 
