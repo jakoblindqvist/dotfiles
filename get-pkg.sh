@@ -1,4 +1,22 @@
 #!/bin/bash
 
-apt install --assume-yes git
-apt install --assume-yes vim
+BASE=TRUE
+PYTHON=FALSE
+CPP=FALSE
+
+declare -A packages
+packages=(
+    ["BASE"]="git vim"
+    ["PYTHON"]="python pylint"
+    ["CPP"]="make clang-format"
+)
+
+to_install=""
+
+for package in "${!packages[@]}"; do
+    if [ ${!package} == TRUE ]; then
+        to_install="$to_install ${packages[$package]}"
+    fi
+done
+
+apt install --assume-yes $to_install
