@@ -17,7 +17,10 @@ cp -r ./ftplugin ~/.vim
 
 # Install vundle and install plugins
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-vim -u NONE +PluginInstall +qall
+vim +PluginInstall +qall
 
 # Copy .keybindings.tmux to .byobu config directory
-cp ./.byobu/keybindings.tmux ~/.byobu/keybindings.tmux
+if [ $BYOBU_CONFIG_DIR ]; then
+    cp ./.byobu/keybindings.tmux $BYOBU_CONFIG_DIR/keybindings.tmux
+    touch $BYOBU_CONFIG_DIR/.always-select
+fi
