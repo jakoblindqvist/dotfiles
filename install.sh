@@ -4,19 +4,19 @@ set -x
 
 # Update global git settings
 git config --global --replace-all core.editor vim
-git config --global --replace-all core.excludesfile ~/.gitignore
+git config --global --replace-all core.excludesfile $HOME/.gitignore
 
 # Copy git excludesfile
-cp ./.gitignore ~/.gitignore
+cp .gitignore $HOME
 
 # Copy .vimrc to home directory of current user
-cp ./.vimrc ~/.vimrc
+cp .vimrc $HOME
 
 # Copy language settings
-cp -r ./ftplugin ~/.vim
+cp -r ./ftplugin $HOME/.vim
 
-# Install vundle and install plugins
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+# Download vundle and install plugins from .vimrc.
+git clone https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim
 vim +PluginInstall +qall
 
 # Copy .keybindings.tmux to .byobu config directory
@@ -24,3 +24,6 @@ if [ $BYOBU_CONFIG_DIR ]; then
     cp ./.byobu/keybindings.tmux $BYOBU_CONFIG_DIR/keybindings.tmux
     touch $BYOBU_CONFIG_DIR/.always-select
 fi
+
+# Copy .flake8 config file.
+cp .flake8 $HOME

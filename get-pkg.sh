@@ -1,8 +1,8 @@
 #!/bin/bash
 
 BASE=TRUE
-PYTHON=FALSE
-CPP=FALSE
+PYTHON=TRUE
+CPP=TRUE
 
 declare -A packages
 packages=(
