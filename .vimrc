@@ -5,9 +5,11 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'https://github.com/tpope/vim-surround'
 Plugin 'https://github.com/NLKNguyen/papercolor-theme'
+Plugin 'itchyny/lightline.vim'
 Plugin 'https://github.com/w0rp/ale'
 Plugin 'https://github.com/rhysd/vim-clang-format'
 call vundle#end()
+
 filetype plugin indent on
 
 " Clang Format
@@ -17,9 +19,17 @@ autocmd FileType h ClangFormatAutoEnable
 autocmd FileType cpp ClangFormatAutoEnable
 autocmd FileType hpp ClangFormatAutoEnable
 
-autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+" Set linters in ale.
+let b:ale_linters = {
+\    'python': ['flake8'],
+\    'cpp': ['clang-format']
+\   }
 
-filetype on
+" Configuration for lightline.
+set laststatus=2
+set noshowmode
+
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
 " Reload file if it was changed outside of vim but not inside.
 set autoread
