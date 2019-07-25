@@ -69,6 +69,14 @@ set colorcolumn=80
 set number
 
 " Set colorscheme
+let g:PaperColor_Theme_Options = {
+  \   'theme': {
+  \     'default.dark': {
+  \       'override': {
+  \       }
+  \     }
+  \   }
+  \ }
 set background=dark
 colorscheme PaperColor
 
