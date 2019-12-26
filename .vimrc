@@ -21,8 +21,9 @@ autocmd FileType hpp ClangFormatAutoEnable
 
 " Set linters in ale.
 let b:ale_linters = {
-\    'python': ['flake8'],
-\    'cpp': ['clang-format']
+\    'cpp': ['clang-format'],
+\    'tex': ['chktex'],
+\    'python': ['flake8']
 \   }
 
 " Configuration for lightline.
