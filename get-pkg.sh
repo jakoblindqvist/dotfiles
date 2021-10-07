@@ -6,7 +6,7 @@ CPP=TRUE
 
 declare -A packages
 packages=(
-    ["BASE"]="git vim byobu"
+    ["BASE"]="git vim-gnome byobu"
     ["PYTHON"]="python pylint"
     ["CPP"]="make clang-format"
 )
