@@ -1,14 +1,15 @@
 set nocompatible
 filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'https://github.com/tpope/vim-surround'
-Plugin 'https://github.com/NLKNguyen/papercolor-theme'
-Plugin 'itchyny/lightline.vim'
-Plugin 'https://github.com/w0rp/ale'
-Plugin 'https://github.com/rhysd/vim-clang-format'
-call vundle#end()
+set rtp+=~/.vim/
+call plug#begin()
+  Plug 'itchyny/lightline.vim'
+  Plug 'NLKNguyen/papercolor-theme'
+  Plug 'tpope/vim-fugitive'
+  Plug 'tpope/vim-surround'
+  Plug 'w0rp/ale'
+  Plug 'rhysd/vim-clang-format'
+call plug#end()
+
 filetype plugin indent on
 
 " Integrate clang-format.

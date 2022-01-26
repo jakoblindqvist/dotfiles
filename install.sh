@@ -1,7 +1,5 @@
 #!/bin/bash
 
-set -x
-
 # Update global git settings
 git config --global --replace-all core.editor vim
 git config --global --replace-all core.excludesfile $HOME/.gitignore
@@ -15,9 +13,10 @@ cp .vimrc $HOME
 # Copy language settings
 cp -r ./ftplugin $HOME/.vim
 
-# Download vundle and install plugins from .vimrc.
-git clone https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim
-vim +PluginInstall +qall
+# Download vim-plug and install plugins
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+vim +PlugInstall +qall
 
 # Copy .keybindings.tmux to .byobu config directory
 if [ $BYOBU_CONFIG_DIR ]; then
