@@ -4,6 +4,8 @@ set rtp+=~/.vim/
 call plug#begin()
   Plug 'itchyny/lightline.vim'
   Plug 'NLKNguyen/papercolor-theme'
+  Plug 'tpope/vim-commentary'
+  Plug 'tpope/vim-eunuch'
   Plug 'tpope/vim-fugitive'
   Plug 'tpope/vim-surround'
   Plug 'w0rp/ale'
