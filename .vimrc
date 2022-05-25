@@ -10,6 +10,8 @@ call plug#begin()
   Plug 'tpope/vim-surround'
   Plug 'w0rp/ale'
   Plug 'rhysd/vim-clang-format'
+  Plug 'leafgarland/typescript-vim'
+  Plug 'preservim/nerdtree'
 call plug#end()
 
 filetype plugin indent on
@@ -107,3 +109,8 @@ augroup END
 
 " Make vim use the system clipboard by default (requires +clipboard).
 set clipboard=unnamedplus
+
+nnoremap <leader>n :NERDTreeFocus<CR>
+nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <C-f> :NERDTreeFind<CR>
