@@ -12,6 +12,7 @@ call plug#begin()
   Plug 'rhysd/vim-clang-format'
   Plug 'leafgarland/typescript-vim'
   Plug 'preservim/nerdtree'
+  Plug 'darrikonn/vim-gofmt'
 call plug#end()
 
 filetype plugin indent on
@@ -25,7 +26,7 @@ autocmd FileType hpp ClangFormatAutoEnable
 
 " Set linters in ale.
 let b:ale_linters = {
-\    'cpp': ['clang-format'],
+\    'cpp': ['clang-format', 'clangtidy'],
 \    'tex': ['chktex'],
 \    'python': ['flake8']
 \   }
@@ -110,7 +111,22 @@ augroup END
 " Make vim use the system clipboard by default (requires +clipboard).
 set clipboard=unnamedplus
 
+" NERDTree bindings
 nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
+
+" Shortcuts for tab pages
+nnoremap th  :tabfirst<CR>
+nnoremap tk  :tabnext<CR>
+nnoremap tj  :tabprev<CR>
+nnoremap tl  :tablast<CR>
+nnoremap tt  :tabedit<Space>
+nnoremap tn  :tabnext<Space>
+nnoremap tm  :tabm<Space>
+nnoremap td  :tabclose<CR>
+" Alternatively use
+" "nnoremap th :tabnext<CR>
+" "nnoremap tl :tabprev<CR>
+" "nnoremap tn :tabnew<CR>
