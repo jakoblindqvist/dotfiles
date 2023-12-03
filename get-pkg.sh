@@ -19,4 +19,4 @@ for package in "${!packages[@]}"; do
     fi
 done
 
-apt install --assume-yes $to_install
+apt update && apt install --assume-yes $to_install
