@@ -13,6 +13,7 @@ call plug#begin()
   Plug 'leafgarland/typescript-vim'
   Plug 'preservim/nerdtree'
   Plug 'darrikonn/vim-gofmt'
+  Plug 'bfrg/vim-cpp-modern'
 call plug#end()
 
 filetype plugin indent on
@@ -25,11 +26,14 @@ autocmd FileType cpp ClangFormatAutoEnable
 autocmd FileType hpp ClangFormatAutoEnable
 
 " Set linters in ale.
-let b:ale_linters = {
-\    'cpp': ['clang-format', 'clangtidy'],
+let g:ale_linters = {
+\    'cpp': ['gcc', 'clang'],
 \    'tex': ['chktex'],
 \    'python': ['flake8']
 \   }
+let g:ale_cpp_cc_options = '-std=c++20 -Wall'
+let g:ale_cpp_gcc_options = '-std=c++20 -Wall'
+let g:ale_cpp_clang_options = '-std=c++20 -Wall'
 
 " Configuration for lightline.
 set laststatus=2
