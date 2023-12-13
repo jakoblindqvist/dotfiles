@@ -1,2 +1,2 @@
-AllowShortFunctionsOnASingleLine: Empty
+AllowShortFunctionsOnASingleLine: None
 BreakBeforeBraces: Stroustrup
