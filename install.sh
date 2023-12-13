@@ -24,5 +24,8 @@ if [ $BYOBU_CONFIG_DIR ]; then
     touch $BYOBU_CONFIG_DIR/.always-select
 fi
 
-# Copy .flake8 config file.
+# Copy flake8 config file.
 cp .flake8 $HOME
+
+# Copy clang-format config file.
+cp .clang-format $HOME
