@@ -4,11 +4,10 @@
 git config --global --replace-all core.editor vim
 git config --global --replace-all core.excludesfile $HOME/.gitignore
 
-# Copy git excludesfile
+# Copy dotfiles to $HOME
 cp .gitignore $HOME
-
-# Copy .vimrc to home directory of current user
 cp .vimrc $HOME
+cp .ackrc $HOME
 
 # Copy language settings
 cp -r ./ftplugin $HOME/.vim
