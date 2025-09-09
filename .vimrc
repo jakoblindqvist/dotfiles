@@ -2,18 +2,19 @@ set nocompatible
 filetype off
 set rtp+=~/.vim/
 call plug#begin()
-  Plug 'itchyny/lightline.vim'
   Plug 'NLKNguyen/papercolor-theme'
+  Plug 'bfrg/vim-cpp-modern'
+  Plug 'darrikonn/vim-gofmt'
+  Plug 'itchyny/lightline.vim'
+  Plug 'leafgarland/typescript-vim'
+  Plug 'preservim/nerdtree'
+  Plug 'rhysd/vim-clang-format'
   Plug 'tpope/vim-commentary'
   Plug 'tpope/vim-eunuch'
   Plug 'tpope/vim-fugitive'
+  Plug 'tpope/vim-sensible'
   Plug 'tpope/vim-surround'
   Plug 'w0rp/ale'
-  Plug 'rhysd/vim-clang-format'
-  Plug 'leafgarland/typescript-vim'
-  Plug 'preservim/nerdtree'
-  Plug 'darrikonn/vim-gofmt'
-  Plug 'bfrg/vim-cpp-modern'
 call plug#end()
 
 filetype plugin indent on
