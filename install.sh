@@ -8,6 +8,11 @@ git config --global --replace-all core.excludesfile $HOME/.gitignore
 cp .gitignore $HOME
 cp .vimrc $HOME
 cp .ackrc $HOME
+cp .flake8 $HOME
+cp .clang-format $HOME
+
+# Touch .hushlogin to disable system message on login
+touch $HOME/.hushlogin
 
 # Copy language settings
 cp -r ./ftplugin $HOME/.vim
@@ -22,9 +27,3 @@ if [ $BYOBU_CONFIG_DIR ]; then
     cp ./.byobu/keybindings.tmux $BYOBU_CONFIG_DIR/keybindings.tmux
     touch $BYOBU_CONFIG_DIR/.always-select
 fi
-
-# Copy flake8 config file.
-cp .flake8 $HOME
-
-# Copy clang-format config file.
-cp .clang-format $HOME
