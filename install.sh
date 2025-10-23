@@ -1,16 +1,18 @@
-#!/bin/bash
+#!/bin/bash -x
 
 # Update global git settings
 git config --global --replace-all core.editor vim
 git config --global --replace-all core.excludesfile $HOME/.gitignore
 
 # Copy dotfiles to $HOME
-cp .gitignore $HOME
-cp .vimrc $HOME
-cp .ackrc $HOME
-cp .flake8 $HOME
-cp .clang-format $HOME
-cp .bash_aliases $HOME
+cp \
+    .gitignore \
+    .vimrc \
+    .ackrc \
+    .flake8 \
+    .clang-format \
+    .bash_aliases \
+    $HOME
 
 # Touch .hushlogin to disable system message on login
 touch $HOME/.hushlogin
