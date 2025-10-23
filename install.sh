@@ -10,6 +10,7 @@ cp .vimrc $HOME
 cp .ackrc $HOME
 cp .flake8 $HOME
 cp .clang-format $HOME
+cp .bash_aliases $HOME
 
 # Touch .hushlogin to disable system message on login
 touch $HOME/.hushlogin
