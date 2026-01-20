@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/usr/bin/env bash
 
 # Update global git settings
 git config --global --replace-all core.editor vim
