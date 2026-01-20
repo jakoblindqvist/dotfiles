@@ -30,11 +30,12 @@ autocmd FileType hpp ClangFormatAutoEnable
 let g:ale_linters = {
 \    'cpp': ['gcc', 'clang'],
 \    'tex': ['chktex'],
-\    'python': ['flake8']
 \   }
 let g:ale_cpp_cc_options = '-std=c++20 -Wall'
 let g:ale_cpp_gcc_options = '-std=c++20 -Wall'
 let g:ale_cpp_clang_options = '-std=c++20 -Wall'
+
+set signcolumn=yes
 
 " Configuration for lightline.
 set laststatus=2
@@ -135,3 +136,5 @@ nnoremap td  :tabclose<CR>
 " "nnoremap th :tabnext<CR>
 " "nnoremap tl :tabprev<CR>
 " "nnoremap tn :tabnew<CR>
+
+xnoremap <expr> P '"_d"'.v:register.'P'
