@@ -12,6 +12,7 @@ cp \
     .flake8 \
     .clang-format \
     .bash_aliases \
+    .chktexrc \
     $HOME
 
 # Touch .hushlogin to disable system message on login
