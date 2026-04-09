@@ -34,6 +34,7 @@ let g:ale_linters = {
 let g:ale_cpp_cc_options = '-std=c++20 -Wall'
 let g:ale_cpp_gcc_options = '-std=c++20 -Wall'
 let g:ale_cpp_clang_options = '-std=c++20 -Wall'
+let g:ale_enabled = 0
 
 set signcolumn=yes
 
