@@ -1,5 +1,4 @@
 set nocompatible
-filetype off
 set rtp+=~/.vim/
 call plug#begin()
   Plug 'NLKNguyen/papercolor-theme'
@@ -17,14 +16,12 @@ call plug#begin()
   Plug 'w0rp/ale'
 call plug#end()
 
-filetype plugin indent on
-
 " Integrate clang-format.
 let g:clang_format#command = "/usr/bin/clang-format"
-autocmd FileType c ClangFormatAutoEnable
-autocmd FileType h ClangFormatAutoEnable
-autocmd FileType cpp ClangFormatAutoEnable
-autocmd FileType hpp ClangFormatAutoEnable
+augroup ClangFmt
+  autocmd!
+  autocmd FileType c,cpp ClangFormatAutoEnable
+augroup END
 
 " Set linters in ale.
 let g:ale_linters = {
@@ -34,34 +31,42 @@ let g:ale_linters = {
 let g:ale_cpp_cc_options = '-std=c++20 -Wall'
 let g:ale_cpp_gcc_options = '-std=c++20 -Wall'
 let g:ale_cpp_clang_options = '-std=c++20 -Wall'
-let g:ale_enabled = 0
+let g:ale_lint_on_text_changed = 'never'
 
 set signcolumn=yes
 
 " Configuration for lightline.
-set laststatus=2
 set noshowmode
 
-autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+augroup MarkdownFt
+  autocmd!
+  autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+augroup END
 
 " Reload file if it was changed outside of vim but not inside.
 set autoread
+autocmd FocusGained,BufEnter * checktime
+
+" Allow switching buffers without saving.
+set hidden
 
 " Easier movement between splits.
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-h> <C-W>h
-map <C-l> <C-W>l
+nnoremap <C-j> <C-W>j
+nnoremap <C-k> <C-W>k
+nnoremap <C-h> <C-W>h
+nnoremap <C-l> <C-W>l
 
 " Quickly press jk or Ctrl-l to exit insert mode.
-imap jk <Esc>
-imap <C-l> <Esc>
+inoremap jk <Esc>
+inoremap <C-l> <Esc>
+set timeoutlen=300
 
-" Enable syntax highlight
-syntax on
-
-" Disable terminal bell (both sound and audio).
-set vb t_vb=
+" Disable terminal bell (both sound and visual).
+set visualbell
+set t_vb=
+if has('gui_running')
+  autocmd GUIEnter * set t_vb=
+endif
 
 " Insert spaces when tab is pressed.
 set expandtab
@@ -74,9 +79,6 @@ set softtabstop=4
 
 " Number of spaces to insert when tab is pressed.
 set shiftwidth=4
-
-" Enable 256 colors.
-set t_Co=256
 
 " Show column at width 80 (default).
 set colorcolumn=80
@@ -98,21 +100,21 @@ colorscheme PaperColor
 
 " Highlight trailing whitespace.
 highlight ExtraWhitespace ctermbg=red guibg=red
-match ExtraWhitespace /\s\+$/
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
 
 " Increase cursor visibility.
 augroup CursorLine
-	au!
-	au VimEnter * setlocal cursorline
-	au WinEnter * setlocal cursorline
-	au BufWinEnter * setlocal cursorline
-	au WinLeave * setlocal nocursorline
+        au!
+        au VimEnter * setlocal cursorline
+        au WinEnter * setlocal cursorline
+        au BufWinEnter * setlocal cursorline
+        au WinLeave * setlocal nocursorline
 augroup END
 
 " Automatically reload .vimrc.
 augroup myvimrc
-	au!
-	au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
+        au!
+        au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
 augroup END
 
 " Make vim use the system clipboard by default (requires +clipboard).
@@ -133,9 +135,5 @@ nnoremap tt  :tabedit<Space>
 nnoremap tn  :tabnext<Space>
 nnoremap tm  :tabm<Space>
 nnoremap td  :tabclose<CR>
-" Alternatively use
-" "nnoremap th :tabnext<CR>
-" "nnoremap tl :tabprev<CR>
-" "nnoremap tn :tabnew<CR>
 
 xnoremap <expr> P '"_d"'.v:register.'P'
